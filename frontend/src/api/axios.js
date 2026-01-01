@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/', // Replace with your backend URL
+    baseURL: 'https://post-manager-backend.onrender.com/',
     withCredentials: true, // Include cookies in requests
 });
 
