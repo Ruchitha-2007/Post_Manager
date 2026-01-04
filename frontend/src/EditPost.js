@@ -6,12 +6,13 @@ const EditPost = ({posts,handleUpdate,title,body,setTitle,setBody}) => {
   const {setLoggedIn}= useContext(AuthContext);
   const {id}= useParams();
   const post= posts.find(p=>(p._id==id));
-  if(!post){
-    return <p>Post not found</p>
-  }
+  
   useEffect(() => {
     setLoggedIn(true)
   }, [setLoggedIn])
+  if(!post){
+    return <p>Post not found</p>
+  }
   return (
       <form className="edit-post" onSubmit={(e)=>handleUpdate(e,id)} >
         <div className="edit-div-title">
