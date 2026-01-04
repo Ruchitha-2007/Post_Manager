@@ -9,7 +9,7 @@ import { verifyJWT } from './verifyJWT.js';
 import cookieParser from 'cookie-parser'
 
 app.use(cors({
-    origin: 'http://localhost:3000', // EXACT frontend URL
+    origin: 'https://post-manager-ul6g.vercel.app', // EXACT frontend URL
     credentials: true
   }));// Added cors middleware
 app.use(express.json());
