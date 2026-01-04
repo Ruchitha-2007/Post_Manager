@@ -9,9 +9,13 @@ import { verifyJWT } from './verifyJWT.js';
 import cookieParser from 'cookie-parser'
 
 app.use(cors({
-    origin: 'https://post-manager-ul6g.vercel.app', // EXACT frontend URL
-    credentials: true
-  }));// Added cors middleware
+  origin: 'https://post-manager-ul6g.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+app.options('*', cors()); // ✅ REQUIRED
 app.use(express.json());
 app.use(cookieParser()); // Added cookie-parser middleware
 
