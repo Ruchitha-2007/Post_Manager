@@ -2,8 +2,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const api = axios.create({
-    REACT_APP_API_URL: 'https://post-manager-backend.onrender.com',
-    withCredentials: true, // Include cookies in requests
+    baseURL: process.env.REACT_APP_API_URL, // ✅ THIS is required
+    withCredentials: true,
 });
 
 // Function to get new access token using refresh token
