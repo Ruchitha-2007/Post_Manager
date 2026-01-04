@@ -15,7 +15,6 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('/*', cors()); // ✅ REQUIRED
 app.use(express.json());
 app.use(cookieParser()); // Added cookie-parser middleware
 
