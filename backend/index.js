@@ -9,7 +9,11 @@ import { verifyJWT } from './verifyJWT.js';
 import cookieParser from 'cookie-parser'
 
 app.use(cors({
-  origin: 'https://post-manager-ul6g.vercel.app',
+  // Replace line 12 with this:
+origin: [
+    'https://post-manager-ul6g.vercel.app', 
+    'https://post-manager-ul6g.vercel.app/', // with slash
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
