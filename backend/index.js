@@ -9,15 +9,20 @@ import { verifyJWT } from './verifyJWT.js';
 import cookieParser from 'cookie-parser'
 
 app.use(cors({
-  // Replace line 12 with this:
-origin: [
-    'https://post-manager-ul6g.vercel.app', 
-    'https://post-manager-ul6g.vercel.app/', // with slash
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl) 
+      // and specifically match your Vercel URL
+      const allowed = ['https://post-manager-ul6g.vercel.app', 'https://post-manager-ul6g.vercel.app/'];
+      if (!origin || allowed.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
 
 app.use(express.json());
 app.use(cookieParser()); // Added cookie-parser middleware
