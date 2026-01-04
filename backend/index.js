@@ -14,9 +14,6 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
-app.options('*', (req, res) => {
-    res.sendStatus(204);
-  });
 
 app.use(express.json());
 app.use(cookieParser()); // Added cookie-parser middleware
