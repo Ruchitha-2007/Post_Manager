@@ -16,7 +16,7 @@ export const refresh=async(req,res)=>{
                 return res.status(403).json({ message: 'Invalid or expired refresh token' });
             }
             const accessToken= jwt.sign({id:existingUser._id},process.env.JWT_SECRET,{expiresIn:'1m'});
-            return res.status(200).json({message:'Access token generated successfully', accessToken});
+            return res.status(200).json({message:'Access token generated successfully', accessToken,user:{existingUser.name});
         })
     }catch(err){
         return res.status(500).json({message:err.message});
