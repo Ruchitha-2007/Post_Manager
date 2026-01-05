@@ -22,7 +22,7 @@ export const Login=async(req,res)=>{
         existingUser.refreshToken= refreshToken;
         await existingUser.save();
         return res.status(200).cookie('jwt',refreshToken,{httpOnly: true,secure:true,
-        sameSite: 'none',maxAge:7 * 24 * 60 * 60 * 1000}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:existingUser.name}});
+        sameSite: 'None',maxAge:7 * 24 * 60 * 60 * 1000}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:existingUser.name}});
     }catch(err){
         return res.json({
             message:err,
@@ -55,7 +55,7 @@ export const SignUp=async(req,res)=>{
         newUser.refreshToken= refreshToken;
         await newUser.save();
         return res.status(200).cookie('jwt',refreshToken,{httpOnly: true,secure:true,
-        sameSite: 'none',maxAge:7 * 24 * 60 * 60 * 1000}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:newUser.name}});        
+        sameSite: 'None',maxAge:7 * 24 * 60 * 60 * 1000}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:newUser.name}});        
     }catch(err){
         return res.json({
             message:err,
