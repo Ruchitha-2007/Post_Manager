@@ -40,7 +40,7 @@ app.use('/posts',verifyJWT,postRoutes);
 app.use(/.*/,verifyJWT,(req,res)=>{
     return res.status(404).send({message:'API endpoint not found'});
 });
-const PORT =  Number(process.env.PORT)||5000; // Added default port if process.env.PORT is undefined
+const PORT =  process.env.PORT||5000; // Added default port if process.env.PORT is undefined
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
