@@ -12,7 +12,7 @@ app.use(cors({
     origin: function (origin, callback) {
       // Allow requests with no origin (like mobile apps or curl) 
       // and specifically match your Vercel URL
-      const allowed = ['https://post-manager-ul6g.vercel.app', 'https://post-manager-ul6g.vercel.app/'];
+      const allowed = 'https://post-manager-frontend.onrender.com';
       if (!origin || allowed.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
