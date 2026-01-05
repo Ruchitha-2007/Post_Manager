@@ -21,8 +21,8 @@ export const Login=async(req,res)=>{
         const refreshToken= jwt.sign({id: existingUser._id},process.env.REFRESH_TOKEN_SECRET,{ expiresIn: '7d'});
         existingUser.refreshToken= refreshToken;
         await existingUser.save();
-        return res.status(200).cookie('jwt',refreshToken,{httpOnly: true,
-        sameSite: 'strict'}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:existingUser.name}});
+        return res.status(200).cookie('jwt',refreshToken,{httpOnly: true,secure:true,
+        sameSite: 'none',maxAge:7 * 24 * 60 * 60 * 1000}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:existingUser.name}});
     }catch(err){
         return res.json({
             message:err,
@@ -54,8 +54,8 @@ export const SignUp=async(req,res)=>{
         const refreshToken= jwt.sign({id: newUser._id},process.env.REFRESH_TOKEN_SECRET,{ expiresIn: '7d'});
         newUser.refreshToken= refreshToken;
         await newUser.save();
-        return res.status(200).cookie('jwt',refreshToken,{httpOnly: true,
-            sameSite: 'strict'}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:newUser.name}});        
+        return res.status(200).cookie('jwt',refreshToken,{httpOnly: true,secure:true,
+        sameSite: 'none',maxAge:7 * 24 * 60 * 60 * 1000}).send({message:'Login successful', success:true, accesstoken: accessToken , refreshToken:refreshToken,user:{name:newUser.name}});        
     }catch(err){
         return res.json({
             message:err,
